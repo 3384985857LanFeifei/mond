@@ -1,5 +1,5 @@
 <p align="right">
-  <img align="right" height="140" src="https://github.com/rooootdev/mond/blob/main/mond?raw=true" style="float: right;"/>
+  <img align="right" height="140" src="https://github.com/rooootdev/mond/blob/main/mond.png?raw=true" style="float: right;"/>
 </p>
 
 <h1 align="left">mond</h1>
