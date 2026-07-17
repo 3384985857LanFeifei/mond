@@ -257,7 +257,7 @@ struct ContentView: View {
             }
             .alert("Are you sure?", isPresented: $show_confirm) {
                 Button("Cancel") {
-                    show_confirm = falseg
+                    show_confirm = false
                 }
                 
                 Button("Confirm") {
