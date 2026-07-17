@@ -1,0 +1,46 @@
+//
+//  mond.swift
+//  mond
+//
+//  Created by ruter on 16.07.26.
+//
+
+import SwiftUI
+import Combine
+
+var pipe = Pipe()
+var sema = DispatchSemaphore(value: 0)
+
+@main
+struct mond: App {
+    @StateObject private var state = AppState()
+    
+    init() {
+        if !is_debugged() {
+            setvbuf(stdout, nil, _IONBF, 0)
+            dup2(pipe.fileHandleForWriting.fileDescriptor, STDOUT_FILENO)
+        }
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(state)
+                .onAppear() {
+                    if !is_supported() {
+                        Alertinator.shared.alert(title: "Not supported!", body: "Your iOS version may not be supported by mond. Mond only supports iOS 27.0 and later.")
+                    }
+                }
+                .overlay {
+                    if state.show_respring {
+                        RespringView()
+                            .brightness(-1.0)
+                            .ignoresSafeArea()
+                            .onAppear {
+                                print("(respring) respringing now...")
+                            }
+                    }
+                }
+        }
+    }
+}
