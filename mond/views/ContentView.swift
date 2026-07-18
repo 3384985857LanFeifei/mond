@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var state: AppState
     @AppStorage("mg_devicename") private var mg_devicename: String = ""
+    @AppStorage("token") private var token: String = ""
     
     @State private var mg_dict_now: NSMutableDictionary = NSMutableDictionary()
     @State private var is_valid: Bool = false
@@ -20,9 +21,7 @@ struct ContentView: View {
     @State private var enable_devicename: Bool = false
     @State private var product_type: String = ""
     
-    @State private var show_logs: Bool = false
-    @State private var show_confirm: Bool = false
-    
+    @State private var show_settings: Bool = false    
     private var mg_valid: Bool {
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: TweakPaths.gestalt)) else { return false }
         return (try? PropertyListSerialization.propertyList(from: data, options: [], format: nil)) != nil
@@ -33,6 +32,10 @@ struct ContentView: View {
               let size = attributes[.size] as? UInt64 else { return false }
 
         return size == 0
+    }
+    
+    var valid: Bool {
+        (sandbox_extension_consume(token) ?? -1) >= 0
     }
     
     var body: some View {
@@ -202,69 +205,30 @@ struct ContentView: View {
                 } header: {
                     Label("Internal", systemImage: "ant")
                 }
-                
-                Section {
-                    CreditsRow(name: "roooot", role: "Main Developer", profile: URL(string: "https://github.com/rooootdev")!)
-                    CreditsRow(name: "Jailbreak.Party", role: "UI Components", profile: URL(string: "https://github.com/jailbreakdotparty")!)
-                } header: {
-                    Label("Credits", systemImage: "person.3.fill")
-                }
             }
             .navigationTitle("mond")
             .onAppear {
-                cmg()
+                if !valid {
+                    cmg()
+                } else {
+                    print("(mond) valid token saved, skipping exploit")
+                }
+                
                 mgLoadData()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button {
-                            show_logs = true
+                            show_settings = true
                         } label: {
-                            Image(systemName: "apple.terminal")
-                        }
-                        
-                        Button {
-                            show_confirm = true
-                        } label: {
-                            Image(systemName: "goforward")
+                            Image(systemName: "gear")
                         }
                     }
                 }
             }
-            .sheet(isPresented: $show_logs) {
-                NavigationStack {
-                    List {
-                        Section {
-                            LogView()
-                                .modifier(TerminalPlatter())
-                        } header: {
-                            Label("Logs", systemImage: "apple.terminal")
-                        }
-                    }
-                    .navigationTitle("Logs")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button {
-                                show_logs = false
-                            } label: {
-                                Text("Done")
-                                    .bold()
-                            }
-                        }
-                    }
-                }
-            }
-            .alert("Are you sure?", isPresented: $show_confirm) {
-                Button("Cancel") {
-                    show_confirm = false
-                }
-                
-                Button("Confirm") {
-                    state.respring()
-                }
-            } message: {
-                Text("Confirm that you want to respring.")
+            .sheet(isPresented: $show_settings) {
+                SettingsView()
             }
         }
     }
@@ -507,44 +471,6 @@ struct ContentView: View {
         return machineMirror.children.reduce("") { identifier, element in
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
-        }
-    }
-}
-
-struct CreditsRow: View {
-    let name: String
-    let role: String
-    let profile: URL
-
-    private var pfp: URL? {
-        URL(string: profile.absoluteString + ".png")
-    }
-
-    var body: some View {
-        HStack(alignment: .top) {
-            AsyncImage(url: pfp) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 40, height: 40)
-            .clipShape(Circle())
-
-            VStack(alignment: .leading) {
-                Text(name)
-                    .font(.headline)
-
-                Text(role)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-
-            Spacer()
-        }
-        .onTapGesture {
-            UIApplication.shared.open(profile)
         }
     }
 }
