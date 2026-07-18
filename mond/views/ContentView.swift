@@ -207,6 +207,7 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("mond")
+            .tint(Color("AccentColor"))
             .onAppear {
                 if !valid {
                     cmg()
