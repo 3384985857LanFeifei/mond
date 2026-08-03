@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
-import Combine
+import PartyUI
 
 var pipe = Pipe()
 var sema = DispatchSemaphore(value: 0)
+
+var path: String {
+    let url = FileManager.default
+        .urls(for: .documentDirectory, in: .userDomainMask)[0]
+        .appendingPathComponent("test.txt")
+
+    if !FileManager.default.fileExists(atPath: url.path) {
+        FileManager.default.createFile(atPath: url.path, contents: Data())
+    }
+
+    return url.path
+} 
 
 @main
 struct mond: App {

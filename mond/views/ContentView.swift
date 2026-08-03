@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartyUI
 
 struct ContentView: View {
     @EnvironmentObject var state: AppState
@@ -21,7 +22,8 @@ struct ContentView: View {
     @State private var enable_devicename: Bool = false
     @State private var product_type: String = ""
     
-    @State private var show_settings: Bool = false    
+    @State private var show_settings: Bool = false
+    
     private var mg_valid: Bool {
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: TweakPaths.gestalt)) else { return false }
         return (try? PropertyListSerialization.propertyList(from: data, options: [], format: nil)) != nil
@@ -55,6 +57,18 @@ struct ContentView: View {
                     } footer: {
                         Text("Rebooting now might cause a bootloop. Try pressing 'Revert Tweaks'. If the warnings dont go away after that, you're fucked.")
                     }
+                }
+                
+                Button {
+                    ba_mark_purgable(path)
+                } label: {
+                    Text("test")
+                }
+                
+                Button {
+                    let _ = dd_delete(path: "/var/mobile/Library/Logs/CrashReporter/bluetoothd-2026-05-23-022309.ips")
+                } label: {
+                    Text("test2")
                 }
                 
                 Section {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartyUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
@@ -34,7 +35,6 @@ struct SettingsView: View {
                                let files = primary["CFBundleIconFiles"] as? [String],
                                let icon = files.last,
                                let img = UIImage(named: icon) {
-                                
                                 Image(uiImage: img)
                                     .resizable()
                                     .frame(width: 45, height: 45)

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CCA208383020090D001C72B6 /* PartyUI in Frameworks */ = {isa = PBXBuildFile; productRef = CCA208373020090D001C72B6 /* PartyUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CCF44B3F300858B300739BFC /* mond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA208383020090D001C72B6 /* PartyUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = mond;
 			packageProductDependencies = (
+				CCA208373020090D001C72B6 /* PartyUI */,
 			);
 			productName = mond;
 			productReference = CCF44B3F300858B300739BFC /* mond.app */;
@@ -82,7 +88,7 @@
 				TargetAttributes = {
 					CCF44B3E300858B300739BFC = {
 						CreatedOnToolsVersion = 26.0.1;
-						LastSwiftMigration = 2600;
+						LastSwiftMigration = 2700;
 					};
 				};
 			};
@@ -95,6 +101,9 @@
 			);
 			mainGroup = CCF44B36300858B300739BFC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CCA208363020090D001C72B6 /* XCRemoteSwiftPackageReference "PartyUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CCF44B40300858B300739BFC /* Products */;
 			projectDirPath = "";
@@ -277,7 +286,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = mond/bridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -315,7 +324,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = mond/bridging.h;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -344,6 +353,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CCA208363020090D001C72B6 /* XCRemoteSwiftPackageReference "PartyUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jailbreakdotparty/PartyUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CCA208373020090D001C72B6 /* PartyUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCA208363020090D001C72B6 /* XCRemoteSwiftPackageReference "PartyUI" */;
+			productName = PartyUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CCF44B37300858B300739BFC /* Project object */;
 }

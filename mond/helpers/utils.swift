@@ -34,3 +34,22 @@ func hasHomeButton() -> Bool {
     return UIDevice.responds(to: sel) &&
         (UIDevice.perform(sel)?.takeUnretainedValue() as? Bool ?? false)
 }
+
+enum AppPaths {
+    static var backups: String {
+        let url = backupsURL
+        try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        return url.path
+    }
+
+    private static var backupsURL: URL {
+        let baseURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+            ?? URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        return baseURL.appendingPathComponent("backups", isDirectory: true)
+    }
+}
+
+enum TweakPaths {
+    static var gestalt = "/private/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/com.apple.MobileGestalt.plist"
+    static var gestalt_dir = "/private/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/"
+}
