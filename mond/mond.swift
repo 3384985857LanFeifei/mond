@@ -10,6 +10,7 @@ import PartyUI
 
 var pipe = Pipe()
 var sema = DispatchSemaphore(value: 0)
+var fm = FileManager.default
 
 var path: String {
     let url = FileManager.default
