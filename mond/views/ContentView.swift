@@ -343,16 +343,21 @@ struct ContentView: View {
 
     private func mg_write(_ data: Data) throws {
         let target_url = URL(fileURLWithPath: TweakPaths.gestalt)
-        let temp_url = target_url.deletingLastPathComponent()
-            .appendingPathComponent(".\(target_url.lastPathComponent).\(UUID().uuidString).tmp")
+        do {
+            let temp_url = target_url.deletingLastPathComponent()
+                .appendingPathComponent(".\(target_url.lastPathComponent).\(UUID().uuidString).tmp")
 
-        try data.write(to: temp_url, options: [.withoutOverwriting])
-        defer { try? fm.removeItem(at: temp_url) }
+            try data.write(to: temp_url, options: [.withoutOverwriting])
+            defer { try? fm.removeItem(at: temp_url) }
 
-        if fm.fileExists(atPath: target_url.path) {
-            _ = try fm.replaceItemAt(target_url, withItemAt: temp_url)
-        } else {
-            try fm.moveItem(at: temp_url, to: target_url)
+            if fm.fileExists(atPath: target_url.path) {
+                _ = try fm.replaceItemAt(target_url, withItemAt: temp_url)
+            } else {
+                try fm.moveItem(at: temp_url, to: target_url)
+            }
+        } catch {
+            // 如果在 Caches 目录中创建 .tmp 临时文件因沙盒权限失败，则直接写入目标文件
+            try data.write(to: target_url, options: [])
         }
     }
     
