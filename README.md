@@ -9,7 +9,7 @@
 <p align="left">Edit MobileGestalt in iOS 27.0 beta 1 - beta 4!</p>
 
 > [!WARNING]  
-> Some of these tweaks have the potential to brick your device! Use at your own risk.
+> Some of the tweaks have the potential to brick your device! Use at your own risk.
 
 **Planned:**<br>
 &#45; HouseArrest file browser (iOS 18 - 27?)
