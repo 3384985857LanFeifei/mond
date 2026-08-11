@@ -212,7 +212,7 @@ struct ContentView: View {
             .tint(Color("AccentColor"))
             .onAppear {
                 if !valid {
-                    // cmg()
+                    cmg()
                 } else {
                     print("(mond) valid token saved, skipping exploit")
                 }
