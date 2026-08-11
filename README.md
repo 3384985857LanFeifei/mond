@@ -12,7 +12,7 @@
 &#45; HouseArrest file browser (iOS 18 - 27?)
 
 **Known Issues:**<br>
-&#45; Tweaks may disappear on reboot
+&#45; Tweaks may disappear on reboot<br>
 &#45; Apple Intelligence activation is broken
 
 **Credits:**<br>
