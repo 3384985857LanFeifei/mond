@@ -30,9 +30,11 @@ func is_supported() -> Bool {
 }
 
 func hasHomeButton() -> Bool {
-    let sel = NSSelectorFromString("_hasHomeButton")
-    return UIDevice.responds(to: sel) &&
-        (UIDevice.perform(sel)?.takeUnretainedValue() as? Bool ?? false)
+    let windows = UIApplication.shared.connectedScenes
+        .compactMap { $0 as? UIWindowScene }
+        .flatMap { $0.windows }
+
+    return windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0 > 0
 }
 
 enum AppPaths {
