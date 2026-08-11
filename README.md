@@ -6,7 +6,7 @@
   <h1 style="margin-bottom: 0;">mond</h1>
 </div>
 
-<p align="left">Edit MobileGestalt in iOS 27.0 beta 1 - beta 4!</p>
+<p align="left">Edit MobileGestalt in iOS 27.0 beta 1 - 4!</p>
 
 > [!WARNING]  
 > Some of the tweaks have the potential to brick your device! Use at your own risk.
