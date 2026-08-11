@@ -13,6 +13,7 @@ struct SettingsView: View {
     @EnvironmentObject var state: AppState
     
     @AppStorage("token") private var token: String = ""
+    @AppStorage("method") private var method: String = "bad_query"
     @State private var show_confirm: Bool = false
     
     var valid: Bool {
@@ -112,6 +113,18 @@ struct SettingsView: View {
                 }
                 
                 Section {
+                    Picker("Method", selection: $method) {
+                        Text("bad_query").tag("bad_query")
+                        Text("cmg").tag("cmg")
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Label("Exploit", systemImage: "wrench.and.screwdriver")
+                } footer: {
+                    Text(method == "cmg" ? "**CMG:** Only supports iOS 27.0 b1 - b4. You should really use bad_query over this..." : "**bad_query:** Supports iOS 26.0 - 27.0 b4. By [forcequit](https://github.com/forcequitOS).")
+                }
+                
+                Section {
                     Button {
                         show_confirm = true
                     } label: {
@@ -123,8 +136,8 @@ struct SettingsView: View {
                 
                 Section {
                     CreditsRow(name: "roooot", role: "Main developer", profile: URL(string: "https://github.com/rooootdev")!)
+                    CreditsRow(name: "forcequit", role: "The bad_query exploit", profile: URL(string: "https://github.com/forcequitOS")!)
                     CreditsRow(name: "johnny", role: "His work on the MCM bug class", profile: URL(string: "https://github.com/0xjohnnydev")!)
-                    CreditsRow(name: "forcequit", role: "His work on bad_query", profile: URL(string: "https://github.com/forcequitOS")!)
                     CreditsRow(name: "jailbreak.party", role: "PartyUI, GestaltView", profile: URL(string: "https://github.com/jailbreakdotparty")!)
                 } header: {
                     Label("Credits", systemImage: "person.3.fill")

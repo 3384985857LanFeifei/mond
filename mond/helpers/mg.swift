@@ -47,3 +47,27 @@ func cache_data_offset(_ key: String) -> Int {
     
     return 0
 }
+
+func grant_mg_write() -> Int64 {
+    if UserDefaults.standard.string(forKey: "method") == "cmg" {
+        cmg()
+        return 0
+    }
+
+    var path_c = TweakPaths.gestalt.utf8CString.map { Int8($0) }
+    let handle = bad_query(&path_c, false, nil, false)
+    switch handle {
+        case -1:
+            print("(bad_query) failed to resolve one or more functions")
+        case -2:
+            print("(bad_query) failed to create sandbox query")
+        case -3:
+            print("(bad_query) outside of containermanager's sandbox")
+        case -4:
+            print("(bad_query) kernel rejected sandbox query")
+        default:
+            print("(bad_query) granted mobilegestalt.plist access! handle: \(handle)")
+    }
+    
+    return handle
+}

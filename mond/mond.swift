@@ -29,6 +29,7 @@ struct mond: App {
     @StateObject private var state = AppState()
     
     init() {
+        UserDefaults.standard.register(defaults: ["exploit_method": "bad_query"])
         if !is_debugged() {
             setvbuf(stdout, nil, _IONBF, 0)
             dup2(pipe.fileHandleForWriting.fileDescriptor, STDOUT_FILENO)
