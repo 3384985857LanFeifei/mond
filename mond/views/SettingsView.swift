@@ -122,8 +122,10 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    CreditsRow(name: "roooot", role: "Main Developer", profile: URL(string: "https://github.com/rooootdev")!)
-                    CreditsRow(name: "Jailbreak.Party", role: "PartyUI, GestaltView", profile: URL(string: "https://github.com/jailbreakdotparty")!)
+                    CreditsRow(name: "roooot", role: "Main developer", profile: URL(string: "https://github.com/rooootdev")!)
+                    CreditsRow(name: "johnny", role: "His work on the MCM bug class", profile: URL(string: "https://github.com/0xjohnnydev")!)
+                    CreditsRow(name: "forcequit", role: "His work on bad_query", profile: URL(string: "https://github.com/forcequitOS")!)
+                    CreditsRow(name: "jailbreak.party", role: "PartyUI, GestaltView", profile: URL(string: "https://github.com/jailbreakdotparty")!)
                 } header: {
                     Label("Credits", systemImage: "person.3.fill")
                 }
