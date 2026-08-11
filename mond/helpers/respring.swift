@@ -59,6 +59,7 @@ struct RespringView: UIViewRepresentable {
 
 final class AppState: ObservableObject {
     @Published var show_respring = false
+    @Published var exploit_succeeded = false
 
     func respring() {
         show_respring = true

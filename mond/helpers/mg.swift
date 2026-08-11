@@ -50,8 +50,7 @@ func cache_data_offset(_ key: String) -> Int {
 
 func grant_mg_write() -> Int64 {
     if UserDefaults.standard.string(forKey: "method") == "cmg" {
-        cmg()
-        return 0
+        return cmg()
     }
 
     var path_c = TweakPaths.gestalt.utf8CString.map { Int8($0) }

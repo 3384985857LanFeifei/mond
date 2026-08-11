@@ -100,6 +100,7 @@ struct SettingsView: View {
                     } label: {
                         Text("Generate Token")
                     }
+                    .disabled(!state.exploit_succeeded)
                 } header: {
                     Label("Token", systemImage: "key")
                 } footer: {
@@ -109,6 +110,10 @@ struct SettingsView: View {
                         } else {
                             Text("Your sandbox token is invalid.")
                         }
+                    }
+                    
+                    if !state.exploit_succeeded {
+                        Text("Disabled because the exploit failed. Is your iOS version supported?")
                     }
                 }
                 
@@ -127,7 +132,7 @@ struct SettingsView: View {
                 } header: {
                     Label("Exploit", systemImage: "wrench.and.screwdriver")
                 } footer: {
-                    Text(method == "cmg" ? "**CMG:** Only supports iOS 27.0 b1 - b4. You should really use bad_query over this..." : "**bad_query:** Supports iOS 26.0 - 27.0 b4. By [forcequit](https://github.com/forcequitOS).")
+                    Text(method == "cmg" ? "**CMG:** Supports iOS 27.0 b1 - b4. You should use bad_query over this..." : "**bad_query:** Supports iOS 27.0 b1 - b4. By [forcequit](https://github.com/forcequitOS).")
                 }
                 
                 Section {

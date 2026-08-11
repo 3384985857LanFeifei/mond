@@ -212,9 +212,10 @@ struct ContentView: View {
             .tint(Color("AccentColor"))
             .onAppear {
                 if !valid {
-                    _ = grant_mg_write()
+                    state.exploit_succeeded = grant_mg_write() >= 0
                 } else {
                     print("(mond) valid token saved, skipping exploit")
+                    state.exploit_succeeded = true
                 }
                 
                 mg_load()
