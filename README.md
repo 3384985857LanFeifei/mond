@@ -5,5 +5,5 @@
 <h1 align="left">mond</h1>
 <p align="left">Edit MobileGestalt on iOS 26 and the 27 betas!</p>
 
-Coming soon?
+Coming soon:
 - better version support (iOS 18?)
