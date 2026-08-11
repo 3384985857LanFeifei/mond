@@ -118,6 +118,12 @@ struct SettingsView: View {
                         Text("cmg").tag("cmg")
                     }
                     .pickerStyle(.segmented)
+                    
+                    Button {
+                        _ = grant_mg_write()
+                    } label: {
+                        Text("Run Exploit")
+                    }
                 } header: {
                     Label("Exploit", systemImage: "wrench.and.screwdriver")
                 } footer: {
