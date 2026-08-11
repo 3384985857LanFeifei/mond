@@ -14,6 +14,7 @@
 **Known Issues:**<br>
 &#45; Tweaks may disappear on reboot<br>
 &#45; Apple Intelligence activation is broken<br>
+&#45; Disable Region restrictions may be broken on some versions/devices<br>
 &#45; Stage Manager and related tweaks may **bootloop** you!
 
 **Credits:**<br>
