@@ -2,7 +2,10 @@
   <img align="right" height="140" src="https://github.com/rooootdev/mond/blob/main/mond.png?raw=true" style="float: right;"/>
 </p>
 
-<h1 align="left">mond</h1>
+<div style="width: calc(100% - 180px);">
+  <h1 style="margin-bottom: 0;">mond</h1>
+</div>
+
 <p align="left">Edit MobileGestalt in iOS 27.0 beta 1 - beta 4!</p>
 
 **Coming soon:**<br>
