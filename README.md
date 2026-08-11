@@ -8,7 +8,7 @@
 
 <p align="left">Edit MobileGestalt in iOS 27.0 beta 1 - beta 4!</p>
 
-**Coming soon:**<br>
+**Planned:**<br>
 &#45; HouseArrest file browser (iOS 18 - 27?)
 
 **Credits:**<br>
