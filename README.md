@@ -13,6 +13,7 @@
 
 **Known Issues:**<br>
 &#45; Tweaks may disappear on reboot
+&#45; Apple Intelligence activation is broken
 
 **Credits:**<br>
 &#45; [forcequit](https://github.com/forcequitOS) for his work on bad_query<br>
