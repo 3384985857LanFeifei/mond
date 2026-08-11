@@ -11,6 +11,9 @@
 **Planned:**<br>
 &#45; HouseArrest file browser (iOS 18 - 27?)
 
+**Known Issues:**<br>
+&#45; Tweaks may disappear on reboot
+
 **Credits:**<br>
 &#45; [forcequit](https://github.com/forcequitOS) for his work on bad_query<br>
 &#45; [johnny](https://github.com/0xjohnnydev) for his work on the MCM bug class<br>
