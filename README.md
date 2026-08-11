@@ -14,6 +14,7 @@
 **Known Issues:**<br>
 &#45; Tweaks may disappear on reboot<br>
 &#45; Apple Intelligence activation is broken
+&#45; Stage Manager and related tweaks may **bootloop** you!
 
 **Credits:**<br>
 &#45; [forcequit](https://github.com/forcequitOS) for his work on bad_query<br>
